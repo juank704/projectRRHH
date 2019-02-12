@@ -1,0 +1,545 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<!-- Modal Foto -->
+<div class="modal fade subirFoto" tabindex="-1" role="dialog"
+	aria-labelledby="myLargeModalLabel" aria-hidden="true"
+	data-backdrop="static" data-close="false">
+	<div class="modal-dialog modal-md">
+		<div class="modal-content">
+			<form id="formFotoTrabajador" method="post" action="#"
+				style="width: 100%;" class="blank-form text-center"
+				enctype="multipart/form-data">
+				<input id="idDocumento" data-show-upload="false" name="documento"
+					col_name="documento" type="file" class="file row_dataDocumentos">
+				<input type="text" style="visibility:hidden;"
+					id="idTipoDocumento" name="tipoDocumento" col_name="tipoDocumento"
+					row_dataDocumento" class="row_dataDocumentos">
+				<div class="modal-footer">	
+					<div class="col-md-12">
+					<div class="col-md-3">
+					<a id="btnDownloadImagen" onclick="downloadImagen();" data-dismiss="modal" style="display:none;"
+						type="button" class="btn green btn-circle btn-primary">Descargar</a>
+					</div>
+					<div class="col-md-2">
+					<a id="btnDeleteImagen" onclick="deleteImagen();" data-dismiss="modal" style="display:none;"
+						type="button" class="btn red btn-circle btn-primary">Eliminar</a>
+					</div>
+					<div class="col-md-2 col-md-offset-3">
+					<a onclick="insertImagen();" data-dismiss="modal"
+						type="button" class="btn btn-circle btn-primary">Grabar</a>
+					</div>
+					<div class="col-md-2">
+					<button type="button" class="btn btn-circle btn-secondary"
+						data-dismiss="modal" >Cerrar</button>
+					</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<!-- Modal Foto -->
+
+
+<!-- Modal RetroActivo Familiar -->
+
+<div id="modalFamiliarRetroActivo" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-body">
+				<div class="row">
+					<form class="form-horizontal form-fix noRadius noBorder"
+						id="formModalFamiliarRetroActivo" role="form">
+
+						<!-- Agregar Tabla RetroActivo -->
+
+						<table
+							class="table table-striped table-bordered table-hover table-checkable"
+							id="datatableFamiliarRetroActivo">
+
+							<thead>
+								<tr role="row" class="heading">
+									<th style="min-width: 150px;">Codigo Trabajador</th>
+									<th style="min-width: 150px;">Familiar</th>
+									<th style="min-width: 100px;">Monto</th>
+									<th width="10%">Periodo</th>
+									<th style="min-width: 100px;">Contrato</th>
+									<th style="min-width: 100px;">Opciones</th>
+								</tr>
+							</thead>
+							<tbody></tbody>
+
+						</table>
+
+
+
+						<a style="display: none;" id="btnVisualizarRetroActivo"
+							class="btn btn-circle green btn-outline">Visualizar
+							RetroActivo</a> <a id="btnInsertRetroActivo"
+							class="btn btn-circle yellow btn-outline">Insertar
+							RetroActivo</a>
+
+						<button type="button" class="btn btn-circle red btn-outline"
+							data-dismiss="modal">Cancelar</button>
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div id="editarFamiliarModalRetroActivo" class="modal fade"
+	role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-body">
+				<div class="row">
+					<form class="form-horizontal form-fix noRadius noBorder"
+						id="formRetroActivo" role="form">
+
+						<div class="col-md-12 text-center">
+							<h5>RetroActivos</h5>
+						</div>
+
+						<div class="col-md-12 text-center">
+							<div class="col-md-6">
+								<label>Monto: </label>
+							</div>
+							<div class="col-md-6">
+								<input id="montoFamiliarRetroActivo" type="text"
+									col_name="monto"
+									class="row_dataFamiliarRetroActivo form-control input-circle money "
+									name="montoFamiliar">
+							</div>
+						</div>
+
+						<div class="col-md-12 text-center">
+							<div class="col-md-6">
+								<label>Periodo: </label>
+							</div>
+							<div class="col-md-6">
+								<input id="periodoRetroActivo2" type="month" name="periodo"
+									id="periodoRetroActivo"
+									class="row_dataFamiliarRetroActivo form-control input-circle text-uppercase"
+									col_name="periodo">
+							</div>
+						</div>
+
+						<div class="col-md-12 text-center">
+							<div class="col-md-6">
+								<label>Familiares: </label>
+							</div>
+							<div class="col-md-6">
+								<select id="idFamiliar" name="idFamiliar"
+									class="row_dataFamiliarRetroActivo form-control input-circle"
+									col_name="idFamiliar">
+									<option value="">Seleccione...</option>
+								</select>
+							</div>
+						</div>
+						
+						<div class="col-md-12 text-center">
+							<div class="col-md-6">
+								<label>Contrato: </label>
+							</div>
+							<div class="col-md-6">
+								<select id="idContratoFamiliar" name="idContratoFamiliar"
+									class="row_dataFamiliarRetroActivo form-control input-circle"
+									col_name="idContrato">
+									<option value="">Seleccione...</option>
+								</select>
+							</div>
+						</div>
+
+
+						<div class="col-md-12" style="visibility: hidden;">
+							<div class="col-md-6">
+								<label>Codigo Trabajador: </label>
+							</div>
+							<div class="col-md-6">
+								<input id="codTrabajadorFamiliar" type="number"
+									col_name="codTrabajador"
+									class="row_dataFamiliarRetroActivo form-control input-circle "
+									name="codTrabajadorFamiliar">
+							</div>
+						</div>
+
+						<a id="btnIngresarRetroActivo"
+							class="btn btn-circle yellow btn-outline">Ingresar
+							RetroActivo</a>
+
+						<button type="button" class="btn btn-circle red btn-outline"
+							data-dismiss="modal">Cancelar</button>
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<!-- Modal RetroActivo Familiar -->
+<div class="modal fade" id="editarFamiliarModal" tabindex="-1"
+	role="dialog" aria-labelledby="editarFamiliarLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg" role="familiar">
+
+		<div style="padding: 20px;" class="modal-content">
+
+			<div class="row">
+
+				<form id="editFamiliarForm" role="form" action="" method="POST"
+					style="width: 100%; height: 100%;">
+
+					<div class="col-md-6 bordered">
+
+						<div class="row" style="margin-bottom: 5px;">
+							<div class="col-md-6">
+								<label style="color: #337ab7;">Rut:</label>
+							</div>
+							<div class="col-md-6 ">
+								<input disabled id="rutFamiliar2" type="text"
+									class="row_dataFamiliarEdit form-control input-circle input_rut rut"
+									col_name="rutFamiliar" name="rutFamiliar">
+							</div>
+						</div>
+
+
+						<div class="row" style="margin-bottom: 5px;">
+							<div class="col-md-6">
+								<label style="color: #337ab7;">Apellido Paterno: </label>
+							</div>
+							<div class="col-md-6">
+								<input id="apellidoPaternoFamiliar2"
+									class="row_dataFamiliarEdit form-control input-circle"
+									col_name="apellidoPaternoFamiliar"
+									name="apellidoPaternoFamiliar">
+							</div>
+
+						</div>
+
+						<div class="row" style="margin-bottom: 5px;">
+
+							<div class="col-md-6">
+								<label style="color: #337ab7;">Apellido Materno: </label>
+							</div>
+							<div class="col-md-6">
+								<input id="apellidoMaternoFamiliar2"
+									class="row_dataFamiliarEdit form-control input-circle"
+									col_name="apellidoMaternoFamiliar" name="apellidoMaterno">
+							</div>
+
+						</div>
+
+						<div class="row" style="margin-bottom: 5px;">
+
+							<div class="col-md-6">
+								<label style="color: #337ab7;">Nombres: </label>
+							</div>
+							<div class="col-md-6">
+								<input id="nombreFamiliar2"
+									class="row_dataFamiliarEdit form-control input-circle"
+									col_name="nombreFamiliar" name="nombreFamiliar">
+							</div>
+
+						</div>
+
+
+						<div class="row" style="margin-bottom: 5px;">
+
+							<div class="col-md-6">
+								<label style="color: #337ab7;">Fecha de Nacimiento: </label>
+							</div>
+							<div class="col-md-6">
+								<input readonly id="fNacimientoFamiliar2" type="text"
+									class="row_dataFamiliarEdit form-control input-circle"
+									col_name="fNacimientoFamiliar" name="fNacimientoFamiliar">
+							</div>
+
+
+						</div>
+
+						<div class="row" style="margin-bottom: 5px;">
+
+							<div class="col-md-6">
+								<label style="color: #337ab7;">Parentesco: </label>
+							</div>
+							<div class="col-md-6">
+								<select id="parentesco2" name="parentesco"
+									class="row_dataFamiliarEdit form-control input-circle"
+									col_name="parentesco">
+									<option value="">Seleccione...</option>
+								</select>
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="col-md-6 bordered">
+
+						<div class="row" style="margin-bottom: 5px;">
+
+							<div class="col-md-6">
+								<label style="color: #337ab7;">Tramo: </label>
+							</div>
+							<div class="col-md-6">
+								<select id="tramoFamiliar2" name="tramoFamiliar2"
+									class="row_dataFamiliarEdit row_dataFamiliarCalculoEdit form-control input-circle"
+									col_name="tramoFamiliar">
+									<option value="">Seleccione...</option>
+								</select>
+							</div>
+
+						</div>
+
+						<div class="row" style="margin-bottom: 5px;">
+
+							<div class="col-md-6">
+								<label style="color: #337ab7;">Monto : </label>
+							</div>
+							<div class="col-md-6">
+								<input id="montoFamiliar2" disabled
+									class="row_dataFamiliarEdit form-control input-circle money"
+									col_name="montoFamiliar" name="montoFamiliar2">
+							</div>
+
+						</div>
+
+						<div class="row" style="margin-bottom: 5px;">
+
+							<div class="col-md-6">
+								<label style="color: #337ab7;">Tipo de Carga: </label>
+							</div>
+							<div class="col-md-6">
+								<select id="tipoCarga2" name="tipoCarga2"
+									class="row_dataFamiliarEdit row_dataFamiliarCalculoEdit form-control input-circle"
+									col_name="tipoCarga">
+									<option value="">Seleccione...</option>
+								</select>
+							</div>
+
+						</div>
+
+						<div class="row" style="margin-bottom: 5px;">
+
+							<div class="col-md-6">
+								<label style="color: #337ab7;">Fecha de Inicio: </label>
+							</div>
+							<div class="col-md-6">
+								<input readonly id="fechaInicioFamiliar2" type="text"
+									class="row_dataFamiliarEdit  row_dataFamiliarCalculoEdit form-control input-circle"
+									col_name="fechaInicioFamiliar" name="fechaInicioFamiliar2">
+							</div>
+
+
+						</div>
+
+						<div class="row" style="margin-bottom: 5px;">
+
+							<div class="col-md-6">
+								<label style="color: #337ab7;">Fecha Fin: </label>
+							</div>
+							<div class="col-md-6">
+								<input readonly id="fechaFinFamiliar2" type="text"
+									class="row_dataFamiliarEdit row_dataFamiliarCalculoEdit form-control input-circle"
+									col_name="fechaFinFamiliar" name="fechaFinFamiliar2">
+							</div>
+
+						</div>
+
+						<!-- <div class="row" style="margin-bottom: 5px;">
+
+							<div class="col-md-6">
+								<label style="color: #337ab7;">Periodo: </label>
+							</div>
+							<div class="col-md-6">
+								<input id="periodo" type="month" name="periodo" 
+								id="periodo" class="row_dataFamiliarEdit form-control input-circle text-uppercase" 
+								col_name="periodo">
+							</div>
+
+						</div> -->
+
+
+						<div class="row fade" style="display: hidden;">
+							<input id="idFamiliarEdit2" class="row_dataFamiliarEdit"
+								col_name="idFamiliar">
+						</div>
+
+						<div class="row">
+							<button id="btnActualizarFamiliar" type="submit"
+								class="btn btn-circle blue btn-outline">Actualizar
+								Familiar</button>
+							<button type="button" class="btn btn-circle red btn-outline"
+								data-dismiss="modal">Cancelar</button>
+						</div>
+
+					</div>
+
+
+
+				</form>
+
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+<!-- Centro Costo Modales -->
+<div class="modal fade" id="editarCentroCostoModal" tabindex="-1"
+	role="dialog" aria-labelledby="editarCentroCostoLabel"
+	aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content noRadius">
+
+			<div class="modal-body">
+				<form class="form-horizontal form-fix noRadius noBorder"
+					id="editCentroCostoForm" role="form">
+					<div class="form-body">
+						<div class="alert alert-danger display-hide" id="fwe">
+							<button class="close" data-close="alert"></button>
+							tienes algunos errores, por favor revisa tu formulario
+						</div>
+						<div class="alert alert-success display-hide" id="fge">
+							<button class="close" data-close="alert"></button>
+							No se encontraron errores
+						</div>
+						<div class="form-group hide">
+							<label class="col-md-3 control-label">idCentroCostoTrabajador</label>
+							<div class="col-md-9">
+								<input type="text" class="form-control noRadius"
+									id="editarIdCentroCostoTrabajador"
+									name="editarIdCentroCostoTrabajador"
+									col_name="idCentroCostoTrabajador">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-3 control-label">Division</label>
+							<div class="col-md-9">
+								<select type="text" class="form-control noRadius"
+									id="editarIdDivision" name="editarDivision"
+									col_name="idDivision">
+									<option value="">Seleccione...</option>
+									<c:if test="${not empty listaDivision}">
+										<c:forEach items="${listaDivision}" var="division">
+											<option value="${division.idDivision}">${division.nombre}</option>
+										</c:forEach>
+									</c:if>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-3 control-label">Sub Division</label>
+							<div class="col-md-9">
+								<select type="number" class="form-control noRadius"
+									id="editarIdSubDivision" name="editarSubDivision"
+									col_name="idSubDivision">
+									<option value="">Seleccione...</option>
+									<c:if test="${not empty listaSubDivision}">
+										<c:forEach items="${listaSubDivision}" var="SubDivision">
+											<option value="${SubDivision.idSubDivision}">${SubDivision.nombre}</option>
+										</c:forEach>
+									</c:if>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-3 control-label">Porcentaje</label>
+							<div class="col-md-9">
+								<input type="text" class="form-control noRadius percentage"
+									id="editarPorcentaje" name="editarPorcentaje"
+									col_name="porcentaje" />
+							</div>
+						</div>
+						<div class="form-actions right1">
+							<button type="button" class="btn default" data-dismiss="modal">Cancelar</button>
+							<button type="submit" class="btn green"
+								id="submitEditCentroCosto">Editar Centro de Costo</button>
+						</div>
+					</div>
+				</form>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+<div class="modal fade" id="agregarCentroCostoModal" tabindex="-1"
+	role="dialog" aria-labelledby="agregarCentroCostoModal"
+	aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<h3 class="modal-title title-padding" id="agregarCentroCostoLabel">Agregar
+				Nueva Distribucion</h3>
+			<div class="modal-body padding-top-5">
+				<form class="form-horizontal form-fix noRadius noBorder"
+					id="insertCentroCostoForm" role="form">
+					<div class="form-body">
+						<div class="alert alert-danger display-hide text-left" id="fwa">
+							<button class="close" data-close="alert"></button>
+							<p id="textofwa"></p>
+						</div>
+						<div class="alert alert-success display-hide" id="fga">
+							<button class="close" data-close="alert"></button>
+							No se encontraron errores
+						</div>
+						<div class="form-group">
+							<label class="col-md-3 control-label">Division</label>
+							<div class="col-md-9">
+								<select type="text" class="form-control noRadius"
+									id="agregarIdDivision" name="agregarIdDivision"
+									col_name="idDivision">
+									<option value="">Seleccione...</option>
+									<c:if test="${not empty listaDivision}">
+										<c:forEach items="${listaDivision}" var="division">
+											<option value="${division.idDivision}">${division.nombre}</option>
+										</c:forEach>
+									</c:if>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-3 control-label">Sub Division</label>
+							<div class="col-md-9">
+								<Select type="text" class="form-control noRadius"
+									id="agregarIdSubDivision" name="agregarIdSubDivision"
+									col_name="idSubDivision">
+									<option value="">Seleccione...</option>
+									<c:if test="${not empty listaSubDivision}">
+										<c:forEach items="${listaSubDivision}" var="SubDivision">
+											<option value="${SubDivision.idSubDivision}">${SubDivision.nombre}</option>
+										</c:forEach>
+									</c:if>
+								</Select>
+
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-3 control-label">Porcentaje</label>
+							<div class="col-md-9">
+								<input type="text" class="form-control noRadius percentage"
+									id="agregarPorcentaje" name="agregarPorcentaje"
+									col_name="porcentaje" />
+							</div>
+						</div>
+						<div class="form-actions right1">
+							<button type="button" class="btn default"
+								onclick="javascript:cerrarModalAgregar()">Cancelar</button>
+							<button type="submit" class="btn green" id="agregarSubmit">Agregar
+								Distribución</button>
+						</div>
+					</div>
+				</form>
+			</div>
+
+		</div>
+	</div>
+</div>

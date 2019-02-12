@@ -1,0 +1,59 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<div class="tab-pane fade" id="datos_contrato">
+	<div class="col-xs-12 col-sm-12 col-md-12">
+		<div class="table-responsive" id="ignore">
+			<table
+				class="table table-condensed table-bordered table-hover table-striped table-condensed"
+				id="tbl_Documentos">
+				<thead>
+					<tr>
+						<th>Documento</th>
+						<th>Impreso</th>
+						<th>Entregado</th>
+						<th>Firmado</th>
+					</tr>
+				</thead>
+				<tbody id="body_Documentos">
+					<tr>
+						<th>Contrato</th>
+						<td><input checked type='checkbox' id="" data-toggle='toggle'
+							onchange='selected(this);' data-onstyle='success'
+							data-size='mini'></td>
+						<th><input checked type='checkbox' id="" data-toggle='toggle'
+							onchange='selected(this);' data-onstyle='success'
+							data-size='mini'></th>
+						<th><input type='checkbox' id="" data-toggle='toggle'
+							onchange='selected(this);' data-onstyle='success'
+							data-size='mini'></th>
+					</tr>
+					<tr>
+						<th>Anexo de horas Extraordinarias</th>
+						<td><input checked type='checkbox' id="" data-toggle='toggle'
+							onchange='selected(this);' data-onstyle='success'
+							data-size='mini'></td>
+						<td><input checked type='checkbox' id="" data-toggle='toggle'
+							onchange='selected(this);' data-onstyle='success'
+							data-size='mini'></td>
+						<td><input checked type='checkbox' id="" data-toggle='toggle'
+							onchange='selected(this);' data-onstyle='success'
+							data-size='mini'></td>
+					</tr>
+					<tr>
+						<th>Derecho a saber</th>
+						<td><input checked type='checkbox' id="" data-toggle='toggle'
+							onchange='selected(this);' data-onstyle='success'
+							data-size='mini'></td>
+						<td><input type='checkbox' id="" data-toggle='toggle'
+							onchange='selected(this);' data-onstyle='success'
+							data-size='mini'></td>
+						<td><input type='checkbox' id="" data-toggle='toggle'
+							onchange='selected(this);' data-onstyle='success'
+							data-size='mini'></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

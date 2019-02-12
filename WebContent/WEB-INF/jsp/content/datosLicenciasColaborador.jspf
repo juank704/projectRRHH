@@ -1,0 +1,37 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<div class="row tab-pane fade" id="datos_licencias"
+	style="padding: 0 30px 0 30px;">
+
+
+	<div class="table-responsive" id="ignore">
+		<table
+			class="table table-bordered table-hover table-striped table-condensed"
+			id="datatable_licencias">
+			<thead>
+				<tr>
+					<th>Cod. trabajador</th>
+					<th>Tipo de<br>Licencia
+					</th>
+					<th>Subtipo<br>Licencia
+					</th>
+					<th>Reposo Parcial</th>
+					<th>Incluye<br>feriados
+					</th>
+					<th>Fecha Desde</th>
+					<th>Fecha Hasta</th>
+					<th>Horas<br>Inasistencia
+					</th>
+					<th>Dias<br>Corridos
+					</th>
+					<th>Archivo</th>
+
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
+	</div>
+
+
+</div>

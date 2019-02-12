@@ -1,0 +1,229 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<div class="row tab-pane fade" id="datos_asignacionFamiliar"
+	style="padding: 30px">
+
+	<form id="insertarFamiliarForm" style="width: 100%; height: 100%;"
+		action="#" method="post">
+
+		<div class="col-md-12">
+
+			<div class="col-md-12 portlet light bordered">
+
+				<div class="row" style="margin-bottom: 5px;">
+					<div class="col-md-2 ">
+						<label style="color: #337ab7;">Tipo de Carga: </label>
+					</div>
+					<div class="col-md-2">
+						<select id="tipoCarga"
+							class="row_dataFamiliar row_dataFamiliarCalculo form-control btn-circle btn-sm"
+							col_name="tipoCarga" name="tipoCarga">
+							<option value="">Seleccione..</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="row" style="margin-bottom: 5px;">
+					<div class="col-md-2">
+						<label style="color: #337ab7;">Rut:</label>
+					</div>
+					<div class="col-md-2 ">
+						<input id="rutFamiliar" type="text"
+							class="row_dataFamiliar form-control input-circle input_rut rut"
+							col_name="rutFamiliar" name="rutFamiliar">
+					</div>
+
+					<div class="col-md-2 ">
+						<label style="color: #337ab7;">Tramo:</label>
+					</div>
+					<div class="col-md-2 ">
+						<select id="tramoFamiliar"
+							class="row_dataFamiliar row_dataFamiliarCalculo form-control input-circle"
+							col_name="tramoFamiliar" name="tramoFamiliar">
+							<option value="">Seleccione...</option>
+						</select>
+					</div>
+
+					<div class="col-md-2 ">
+						<label style="color: #337ab7;">Monto:</label>
+					</div>
+					<div class="col-md-2 ">
+						<input id="montoFamiliar" disabled type="text"
+							col_name="montoFamiliar"
+							class="row_dataFamiliar form-control input-circle money"
+							name="montoFamiliar">
+					</div>
+
+				</div>
+
+				<div class="row" style="margin-bottom: 5px;">
+					<div class="col-md-2">
+						<label style="color: #337ab7;">Apellido Paterno: </label>
+					</div>
+					<div class="col-md-2">
+						<input id="apellidoPaternoFamiliar"
+							class="row_dataFamiliar form-control input-circle"
+							col_name="apellidoPaternoFamiliar" name="apellidoPaternoFamiliar">
+					</div>
+
+					<!-- <div class="col-md-2 ">
+						<label style="color: #337ab7;">Tipo de Carga: </label>
+					</div>
+					<div class="col-md-2">
+						<select id="tipoCarga"
+							class="row_dataFamiliar row_dataFamiliarCalculo form-control btn-circle btn-sm"
+							col_name="tipoCarga" name="tipoCarga">
+							<option value="">Seleccione..</option>
+						</select>
+					</div> -->
+
+
+				</div>
+
+				<div class="row" style="margin-bottom: 5px;">
+
+					<div class="col-md-2">
+						<label style="color: #337ab7;">Apellido Materno: </label>
+					</div>
+					<div class="col-md-2">
+						<input id="apellidoMaternoFamiliar"
+							class="row_dataFamiliar form-control input-circle"
+							col_name="apellidoMaternoFamiliar" name="apellidoMaterno">
+					</div>
+
+					<div class="col-md-2 ">
+						<label style="color: #337ab7;">Fecha Inicio:</label>
+					</div>
+					<div class="col-md-2 ">
+						<input id="fechaInicioFamiliar" type="text"
+							col_name="fechaInicioFamiliar" name="fechaInicioFamiliar"
+							class="row_dataFamiliar row_dataFamiliarCalculo form-control input-circle dateWork">
+					</div>
+
+					<div class="col-md-2">
+						<label style="color: #337ab7;">Fecha Fin: </label>
+					</div>
+					<div class="col-md-2">
+						<input type="text" id="fechaFinFamiliar" name="fechaFinFamiliar"
+							col_name="fechaFinFamiliar"
+							class="row_dataFamiliar row_dataFamiliarCalculo form-control input-circle dateWork">
+					</div>
+
+
+				</div>
+
+
+				<div class="row" style="margin-bottom: 5px;">
+
+					<div class="col-md-2">
+						<label style="color: #337ab7;">Nombres: </label>
+					</div>
+					<div class="col-md-2">
+						<input id="nombreFamiliar"
+							class="row_dataFamiliar form-control input-circle"
+							col_name="nombreFamiliar" name="nombreFamiliar">
+					</div>
+					
+				<!-- 	<div class="col-md-2">
+						<label style="color: #337ab7;">Contrato: </label>
+					</div>
+					<div class="col-md-2">
+						<Select id="idContratoFamiliar"
+							class="row_dataFamiliar form-control input-circle"
+							col_name="idContrato" name="idContrato"><option value="">Seleccione...</option>
+						</Select>
+					</div>
+ -->
+				</div>
+
+
+				<div class="row" style="margin-bottom: 5px;">
+
+					<div class="col-md-2">
+						<label style="color: #337ab7;">Fecha de Nacimiento: </label>
+					</div>
+					<div class="col-md-2">
+						<input id="fNacimientoFamiliar" type="text"
+							class="row_dataFamiliar form-control input-circle dateWork"
+							col_name="fNacimientoFamiliar" name="fNacimientoFamiliar">
+					</div>
+
+				</div>
+
+
+				<div class="row" style="margin-bottom: 5px;">
+
+					<div class="col-md-2">
+						<label style="color: #337ab7;">Parentesco: </label>
+					</div>
+					<div class="col-md-2">
+						<select id="parentesco" name="parentesco"
+							class="row_dataFamiliar form-control input-circle"
+							col_name="parentesco">
+							<option value="">Seleccione...</option>
+						</select>
+					</div>
+
+
+					<div class="col-md-4 text-right">
+						<a id="btnRetroActivo" class="btn btn-circle blue btn-outline">
+							Retroactivo <i class="fa fa-money fa-lg"></i>
+						</a>
+					</div>
+
+					<div class="col-md-2">
+						<button id="addFamiliar" class="btn btn-circle red btn-outline"
+							type="submit">
+							Guardar <i class="fa fa-floppy-o fa-lg"></i>
+						</button>
+					</div>
+					
+					<div class="col-md-2">
+						<a id="addFamiliar" class="btn btn-circle green btn-outline" onclick="sincronizarFamiliar()"
+							type="submit">
+							Reactivar Familiares <i class="fa fa-refresh fa-lg"></i>
+						</a>
+					</div>
+					
+				</div>
+			</div>
+			
+		</div>
+
+	</form>
+
+
+	<div class="col-md-12">
+
+		<table
+			class="table table-striped table-bordered table-hover table-checkable"
+			id="datatable_Familiares">
+
+			<thead>
+				<tr role="row" class="heading">
+					<th style="width: 2%;"><input
+						style="margin-left: auto; margin-right: auto;" type='checkbox'
+						title='Seleccionar Todo' id='checkAll'
+						onchange='javascript: selectALL(this);' class='checkbox' /></th>
+					<th style="min-width: 150px;">Nombre</th>
+					<th style="min-width: 100px;">Fecha de Nacimiento</th>
+					<!-- <th width="10%">Registro</th> -->
+					<!-- <th width="10%">Normal</th> -->
+					<!-- <th width="10%">Duplo</th> -->
+					<th width="10%">Tipo de Carga</th>
+					<th width="10%">Tramo</th>
+					<th style="min-width: 100px;">Monto</th>
+					<th style="min-width: 100px;">Fecha Inicio</th>
+					<th style="min-width: 100px;">Fecha Fin</th>
+					<th style="min-width: 150px;">Contrato</th>
+					<th style="min-width: 100px;">Actions</th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+
+		</table>
+
+	</div>
+
+</div>

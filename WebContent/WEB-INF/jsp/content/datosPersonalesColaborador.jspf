@@ -1,0 +1,542 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<div class="tab-pane fade in active" id="datos_personales"
+	style="padding: 30px;">
+
+	<form id="actualizarTrabajadorForm" action="#" method="post"
+		class="col-md-12 blank-form">
+
+		<div class="row">
+
+			<div class="col-md-4">
+
+				<table class="table table-condensed table-bordered">
+					<tr>
+						<th>Nacionalidad:</th>
+						<td><select disabled id="idNacionalidad" tabindex="1"
+							class="form-control input-circle row_data" edit-type="click"
+							col_name="idNacionalidad" name="idNacionalidad">
+								<option value="">Seleccione...</option>
+						</select></td>
+					</tr>
+					<tr>
+						<th>Rut</th>
+						<td><div class="inner-addon right-addon" >
+						<a data-toggle="modal" data-target=".subirFoto" class="glyphicon glyphicon-user" data-idtipodocumento="55" onclick="previsualizarImagen(55)"></a>
+						<input id="rutWorker" tabindex="2"
+							class="blank-input form-control input-md row_data input_rut rut"
+							col_name="rut" type="text" name="rut">
+							</div></td>
+					</tr>
+					<tr class="tr-display-none">
+						<th>Pasaporte</th>
+						<td><div class="inner-addon right-addon" >
+						<a data-toggle="modal" data-target=".subirFoto" class="glyphicon glyphicon-globe" data-idtipodocumento="60" onclick="previsualizarImagen(60)"></a>
+						<input id="pasaporte" tabindex="3"
+							onkeypress="return justNumbers2(event);"
+							class="blank-input form-control input-md row_data"
+							col_name="pasaporte" type="text" name="pasaporte"></div></td>
+					</tr>
+					<tr class="tr-display-none">
+						<th>Rut Temporal</th>
+						<td><div class="inner-addon right-addon" >
+						<a data-toggle="modal" data-target=".subirFoto" class="glyphicon glyphicon-user" data-idtipodocumento="65" onclick="previsualizarImagen(65)"></a>
+						<input id="rutTemporal" tabindex="4"
+							class="blank-input form-control input-md row_data input_rut rut"
+							col_name="rutTemporal" type="text" name="rutTemporal"></div></td>
+					</tr>
+					<tr>
+						<th>Nombre</th>
+						<td><input id="name2" tabindex="5"
+							class="blank-input form-control input-md row_data"
+							edit-type="click" col_name="nombre" name="nombre"></td>
+					</tr>
+					<tr>
+						<th>Apellido Paterno</th>
+						<td><input id="apellidoPaterno" tabindex="6"
+							class="blank-input form-control input-md row_data"
+							edit-type="click" col_name="apellidoPaterno"
+							name="apellidoPaterno"></td>
+					</tr>
+					<tr>
+						<th>Apellidos Materno</th>
+						<td><input id="apellidoMaterno" tabindex="7"
+							class="blank-input form-control input-md row_data"
+							edit-type="click" col_name="apellidoMaterno"
+							name="apellidoMaterno"></td>
+					</tr>
+				</table>
+
+				<table class="table table-condensed table-bordered">
+					<tr>
+						<th>F/Nacimiento:</th>
+						<td><input readonly id="fNacimiento" type="text" tabindex="8"
+							class="form-control input-circle row_data dateWork"
+							edit-type="click" col_name="fNacimiento" name="fNacimiento"></td>
+					</tr>
+					<tr>
+						<th>Sexo:</th>
+						<td><select id="idGenero" tabindex="9"
+							class="form-control input-circle row_data" edit-type="click"
+							col_name="idGenero" name="idGenero">
+								<option value="">Seleccione...</option>
+						</select></td>
+					</tr>
+					<tr>
+						<th>Estado Civil:</th>
+						<td><select disabled id="idEstadoCivil" tabindex="10"
+							class="form-control input-circle row_data" edit-type="click"
+							col_name="idEstadoCivil" name="idEstadoCivil">
+								<option value="">Seleccione...</option>
+						</select></td>
+					</tr>
+					<tr>
+						<th>Etnia/Comunidad:</th>
+						<td><select disabled id="idEtnia" tabindex="11"
+							class="form-control input-circle row_data" edit-type="click"
+							col_name="idEtnia" name="idEtnia">
+								<option value="">Seleccione...</option>
+						</select></td>
+					</tr>
+				</table>
+
+				<table class="table table-condensed table-bordered">
+					<tr>
+						<th>Direccion:</th>
+						<td class="desplegar" ><input type="checkbox" id="datosDireccion"
+							class="row_data checkbox checkboxOption checkboxCollapse"
+							col_name="datosDireccion">
+							<label class="desplegar-label" for="datosDireccion"></label>
+							</td>
+					</tr>
+					<tr>
+						<th>Calle:</th>
+						<td><input id="calle" tabindex="15"
+							class="blank-input form-control input-md row_data row_dataDireccion"
+							edit-type="click" col_name="calle" name="calle"></input></td>
+					</tr>
+					<tr>
+						<th>N:</th>
+						<td><input id="ndireccion" name="ndireccion"
+							onkeypress="return justNumbers3(event);"
+							class="blank-input form-control input-md row_data row_dataDireccion"
+							col_name="ndireccion"></td>
+
+					</tr>
+					<tr>
+						<th>Depto:</th>
+						<td><input id="depto" tabindex="15"
+							class="blank-input form-control input-md row_data row_dataDireccion"
+							edit-type="click" col_name="depto" name="depto"></input></td>
+					</tr>
+
+					<tr>
+						<th>Pobl/Villa:</th>
+						<td><input id="poblacion" tabindex="15"
+							class="blank-input form-control input-md row_data row_dataDireccion"
+							edit-type="click" col_name="poblacion" name="poblacion"></input></td>
+					</tr>
+					<!-- <tr>
+								<th>Direccion:</th>
+								<td><input id="direccion" tabindex="15"
+									class="blank-input form-control input-md row_data row_dataDireccion"
+									edit-type="click" col_name="direccion" name="direccion"></input></td>
+							</tr> -->
+				</table>
+
+				<table class="table table-condensed table-bordered">
+					<tr>
+						<th>Region:</th>
+						<td><select id="idRegion" tabindex="16"
+							class="form-control input-circle row_data" edit-type="click"
+							col_name="idRegion" name="idRegion">
+								<option value="">Seleccione...</option>
+								<c:if test="${not empty listaRegion}">
+									<c:forEach items="${listaRegion}" var="region">
+										<c:if test="${region.idregion != 16}">
+											<option value="${region.idregion}">${region.region}</option>
+										</c:if>
+									</c:forEach>
+								</c:if>
+						</select></td>
+					</tr>
+					<tr>
+						<th>Provincia:</th>
+						<td><select id="idProvincia" tabindex="17"
+							class="form-control input-circle row_data" edit-type="click"
+							col_name="idProvincia" name="idProvincia">
+								<option value="">Seleccione...</option>
+								<c:if test="${not empty listaProvincia}">
+									<c:forEach items="${listaProvincia}" var="provincia">
+										<option value="${provincia.id}">${provincia.nombre}</option>
+									</c:forEach>
+								</c:if>
+						</select></td>
+					</tr>
+					<tr>
+						<th>Comuna:</th>
+						<td><select id=idComuna tabindex="18"
+							class="form-control input-circle row_data" edit-type="click"
+							col_name="idComuna" name="idComuna">
+								<option value="">Seleccione...</option>
+								<c:if test="${not empty listaComuna}">
+									<c:forEach items="${listaComuna}" var="comuna">
+										<option value="${comuna.id}">${comuna.nombre}</option>
+									</c:forEach>
+								</c:if>
+						</select></td>
+					</tr>
+					<!-- <tr>
+							<th>Direccion:</th>
+							<td><input id="direccion" tabindex="15"
+								class="blank-input form-control input-md row_data row_dataContacto"
+								edit-type="click" col_name="direccion" name="direccion"></input></td>
+						</tr> -->
+				</table>
+
+			</div>
+
+			<div class="col-md-4">
+
+				<table class="table table-condensed table-bordered">
+					<tr>
+						<th>Ley 21.015 (Inclusión)</th>
+						<td class="desplegar"><input type='checkbox' id='capacidades'
+							class='row_data row_dataCalculo checkbox checkboxOption checkboxCollapse'
+							col_name="capacidades" />
+							<label class="desplegar-label" for="capacidades"></label>
+							</td>
+					</tr>
+					<tr class="tr-display-non">
+						<th>N° Credencial</th>
+						<td><input id="nCredencial"
+							onkeypress="return justNumbers2(event);"
+							class="blank-input form-control input-md row_dataDiscapacidad"
+							col_name="nCredencial" type="text" name="nCredencial"></td>
+					</tr>
+					<tr class="tr-display-non">
+						<th>Fecha Reevaluacion</th>
+						<td><input readonly id="fechaReevaluacion" type="text"
+							onkeypress="return justNumbers2(event);"
+							class="form-control input-circle row_dataDiscapacidad dateWork"
+							col_name="fechaReevaluacion" name="fechaReevaluacion"></td>
+					</tr>
+					<tr class="tr-display-non">
+						<th>Grado Discapacidad</th>
+						<td><select id="gradoDiscapacidad"
+							class="form-control input-circle row_dataDiscapacidad"
+							col_name="gradoDiscapacidad" type="text" name="gradoDiscapacidad">
+								<option value="">Seleccione...</option>
+						</select></td>
+					</tr>
+					<tr class="tr-display-non">
+						<th>Porcentaje de Discapacidad</th>
+						<td><input id="porcentajeDiscapacidad"
+							onkeypress="return justNumbers2(event);"
+							class="blank-input form-control input-md row_dataDiscapacidad percentage"
+							col_name="porcentajeDiscapacidad" type="text"
+							name="porcentajeDiscapacidad"></td>
+					</tr>
+					<tr class="tr-display-non">
+						<th>Causa Discapacidad</th>
+						<td><select id="causaDiscapacidad"
+							class="form-control input-circle row_dataDiscapacidad"
+							col_name="causaDiscapacidad" type="text" name="causaDiscapacidad">
+								<option value="">Seleccione...</option>
+						</select></td>
+					</tr>
+					<tr class="tr-display-non">
+						<th>Movilidad Reducida</th>
+						<td><select id="movilidadReducida"
+							class="form-control input-circle row_dataDiscapacidad"
+							col_name="movilidadReducida" type="text" name="movilidadReducida">
+								<option value="">Seleccione...</option>
+						</select></td>
+					</tr>
+
+				</table>
+
+				<table class="table table-condensed table-bordered">
+					<tr>
+						<th>Informacion de Contacto:</th>
+						<td class="desplegar"><input type="checkbox" id="informacionContacto"
+							class="row_data checkbox checkboxOption checkboxCollapse "
+							col_name="informacionContacto">
+							<label class="desplegar-label" for="informacionContacto"></label>
+							</td>
+					</tr>
+					<tr>
+						<th>Telefono Casa:</th>
+						<td><input id="phoneCasa" tabindex="12"
+							onkeypress="return justNumbers2(event);"
+							class="blank-input form-control input-md row_data row_dataContacto"
+							edit-type="click" col_name="telefono" name="telefono"></input></td>
+					</tr>
+					<tr>
+						<th>Telefono Celular:</th>
+						<td><input id="celular" tabindex="13"
+							onkeypress="return justNumbers2(event);"
+							class="blank-input form-control input-md row_data row_dataContacto"
+							edit-type="click" col_name="celular" name="celular"></input></td>
+					</tr>
+					<tr>
+						<th>E-mail:</th>
+						<td><input id="mailWorker" tabindex="14"
+							class="blank-input form-control input-md row_data row_dataContacto"
+							edit-type="click" col_name="email" name="email"></input></td>
+					</tr>
+				</table>
+
+
+				<table class="table table-condensed table-bordered">
+					<tr>
+						<th>Contacto Emergencias:</th>
+						<td class="desplegar"><input type="checkbox" id="datosEmergencia"
+							class="row_data checkbox checkboxOption checkboxCollapse "
+							col_name="datosEmergencia">
+							<label class="desplegar-label" for="datosEmergencia"></label>
+							</td>
+					</tr>
+					<tr style="display: none;">
+						<th>Nombre</th>
+						<td><input id="nombreEmergencia"
+							class="blank-input form-control input-md row_data row_dataEmergencia"
+							edit-type="click" col_name="nombreEmergencia"
+							name="nombreEmergencia"></td>
+					</tr>
+					<tr style="display: none;">
+						<th>Telefono</th>
+						<td><input onkeypress="return justNumbers2(event);"
+							id="telefonoEmergencia"
+							class="blank-input form-control input-md row_data row_dataEmergencia"
+							edit-type="click" col_name="telefonoEmergencia"
+							name="telefonoEmergencia"></td>
+					</tr>
+					<tr style="display: none;">
+						<th>Email</th>
+						<td><input id="emailEmergencia"
+							class="blank-input form-control input-md row_data row_dataEmergencia"
+							edit-type="click" col_name="emailEmergencia"
+							name="emailEmergencia"></td>
+					</tr>
+					<tr style="display: none;">
+						<th>parentesco</th>
+						<td><select id="parentesco" name="parentesco"
+							class="form-control input-circle row_data row_dataEmergencia"
+							edit-type="click" col_name="parentesco">
+								<option value="">Seleccione...</option></td>
+					</tr>
+				</table>
+
+				<table class="table table-condensed table-bordered">
+					<tr>
+						<th>Recorrido Bus:</th>
+						<td class="desplegar"><input type="checkbox" id="datosRecorrido"
+							class="row_data checkbox checkboxOption checkboxCollapse "
+							col_name="datosRecorrido">
+							<label class="desplegar-label" for="datosRecorrido"></label>
+							</td>
+					</tr>
+					<tr style="display: none;">
+						<th>Recorrido:</th>
+						<td><select id="recorrido" tabindex="31"
+							class="form-control input-circle row_data row_dataRecorrido "
+							edit-type="click" col_name="recorrido" name="idSector">
+								<option value="">Seleccione...</option>
+								<c:if test="${not empty listaRecorrido}">
+									<c:forEach items="${listaRecorrido}" var="recorrido">
+										<option value="${recorrido.id_recorrido}">${recorrido.detalle}</option>
+									</c:forEach>
+								</c:if>
+						</select></td>
+					</tr>
+					<tr style="display: none;">
+						<th>Sector:</th>
+						<td><select id="idSector" tabindex="32"
+							class="form-control input-circle row_data row_dataRecorrido"
+							edit-type="click" col_name="idSector" name="idSector">
+								<option value="">Seleccione...</option>
+								<c:if test="${not empty listaSector}">
+									<c:forEach items="${listaSector}" var="sector">
+										<option value="${sector.codigo}">${sector.descripcion}</option>
+									</c:forEach>
+								</c:if>
+						</select></td>
+					</tr>
+				</table>
+
+				<table class="table table-condensed table-bordered">
+					<tr>
+						<th>Datos Academicos</th>
+						<td class="desplegar"><input type='checkbox' id='datosAcademicos'
+							class='row_data checkbox checkboxOption checkboxCollapse'
+							col_name="datosAcademicos" />
+							<label class="desplegar-label" for="datosAcademicos"></label>
+							</td>
+					</tr>
+					<tr style="display: none;">
+						<th>Nivel de Educacion:</th>
+						<td><select id="nivelEducacion" tabindex="34"
+							class="form-control input-circle row_dataInstitucion"
+							edit-type="click" col_name="nivelEducacion" name="nivelEducacion">
+								<option value="">Seleccione...</option>
+						</select></td>
+					</tr>
+					<tr style="display: none;">
+						<th>Nivel:</th>
+						<td><select id="nivel" tabindex="35"
+							class="form-control input-circle row_dataInstitucion"
+							edit-type="click" col_name="nivel" name="nivel">
+								<option value="">Seleccione...</option>
+						</select></td>
+					</tr>
+					<tr style="display: none;">
+						<th>Carrera/Oficio:</th>
+						<td><select id="carrera" tabindex="36"
+							class="form-control input-circle row_dataInstitucion"
+							edit-type="click" col_name="carrera" name="carrera">
+								<option value="">Seleccione...</option>
+						</select></td>
+					</tr>
+					<tr style="display: none;">
+						<th>Instituciones:</th>
+						<td><select id="instituciones" tabindex="37"
+							class="form-control input-circle row_dataInstitucion"
+							edit-type="click" col_name="instituciones" name="instituciones">
+								<option value="">Seleccione...</option>
+						</select></td>
+					</tr>
+					<tr style="display: none;">
+						<th>Nombre Institucion:</th>
+						<td><select id="nombreInstitucion" tabindex="38"
+							class="form-control input-circle row_dataInstitucion"
+							edit-type="click" col_name="nombreInstitucion"
+							name="nombreInstitucion">
+								<option value="">Seleccione...</option>
+						</select></td>
+					</tr>
+					<tr style="display: none;">
+						<th>Fecha Desde:</th>
+						<td><input id="fechaDesdeInstitucion" tabindex="39"
+							type="text"
+							class="form-control input-circle row_dataInstitucion dateWork"
+							edit-type="click" col_name="fechaDesdeInstitucion"
+							name="fechaDesdeInstitucion"></td>
+					</tr>
+					<tr style="display: none;">
+						<th>Fecha Hasta:</th>
+						<td><input id="fechaHastaInstitucion" tabindex="40"
+							type="text"
+							class="form-control input-circle row_dataInstitucion dateWork"
+							edit-type="click" col_name="fechaHastaInstitucion"
+							name="fechaHastaInstitucion"></td>
+					</tr>
+				</table>
+
+				<!-- i1 cuentaBancaria -->
+
+				<table class="table table-condensed table-bordered">
+					<tr>
+						<th>Cuenta Bancaria</th>
+						<td class="desplegar"><input type='checkbox' id='cuentaPrimaria'
+							class='row_data checkbox checkboxOption checkboxCollapse'
+							col_name="cuentaPrimaria" />
+							<label class="desplegar-label" for="cuentaPrimaria"></label>
+							</td>
+					</tr>
+					<tr>
+						<th>Cuenta Primaria:</th>
+						<td id="cuentaPrimaria1"><center>
+								<input disabled type="radio" col_name="cuentaPrimaria"
+									class="form-check-input row_dataCuenta row_dataCuenta1"
+									name="cuentaPrimaria" id="i1">
+							</center></td>
+					</tr>
+					<tr>
+						<th>Banco:</th>
+						<td><select id="idBanco1"
+							class="form-control input-circle row_dataCuenta row_dataCuenta1"
+							edit-type="click" col_name="idBanco" name="idBanco">
+								<option value="">Seleccione...</option>
+						</select></td>
+					</tr>
+					<tr>
+						<th>Tipo de Cuenta:</th>
+						<td><select id="idTipoCuenta1"
+							class="form-control input-circle row_dataCuenta row_dataCuenta1"
+							edit-type="click" col_name="idTipoCuenta" name="idTipoCuenta">
+								<option value="">Seleccione...</option>
+						</select></td>
+					</tr>
+					<tr>
+						<th>Cuenta:</th>
+						<td><input onkeypress="return justNumbers2(event);"
+							id="nCuenta1"
+							class="blank-input form-control input-md row_dataCuenta row_dataCuenta1"
+							col_name="nCuenta" type="text" name="nCuenta"></td>
+					</tr>
+				</table>
+
+
+				<!-- i1 cuentaBancaria -->
+
+			</div>
+
+			<div class="col-md-4">
+
+				<!-- i2 cuentaBancaria -->
+
+				<table class="table table-condensed table-bordered">
+					<tr>
+						<th>Cuenta Bancaria</th>
+						<td aling="left" class="desplegar"><input type='checkbox' checked
+							id='cuentaSecundaria'
+							class='row_data checkbox checkboxOption checkboxCollapse '
+							col_name="cuentaSecundaria" />
+							<label class="desplegar-label" for="cuentaSecundaria"></label>
+							</td>
+					</tr>
+					<tr>
+						<th>Cuenta Primaria:</th>
+						<td id="cuentaPrimaria2"><center>
+								<input type="radio" col_name="cuentaPrimaria"
+									class="form-check-input center row_dataCuenta row_dataCuenta2"
+									name="cuentaPrimaria" id="i2">
+							</center></td>
+					</tr>
+					<tr>
+						<th>Banco:</th>
+						<td><select id="idBanco2"
+							class="form-control input-circle row_dataCuenta row_dataCuenta2"
+							edit-type="click" col_name="idBanco" name="idBanco">
+								<option value="">Seleccione...</option>
+						</select></td>
+					</tr>
+					<tr>
+						<th>Tipo de Cuenta:</th>
+						<td><select id="idTipoCuenta2"
+							class="form-control input-circle row_dataCuenta row_dataCuenta2"
+							edit-type="click" col_name="idTipoCuenta" name="idTipoCuenta">
+								<option value="">Seleccione...</option>
+						</select></td>
+					</tr>
+					<tr>
+						<th>Cuenta:</th>
+						<td><input onkeypress="return justNumbers2(event);"
+							id="nCuenta2"
+							class="blank-input form-control input-md row_dataCuenta row_dataCuenta2"
+							col_name="nCuenta" type="text" name="nCuenta"></td>
+					</tr>
+				</table>
+
+
+				<!-- i2 cuentaBancaria -->
+
+			</div>
+
+		</div>
+								
+	</form>
+
+</div>

@@ -1,0 +1,714 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<div class="padding-30 tab-pane fade" id="datos_laborales">
+
+	<form id="actualizarTrabajadorForm2" action="#" method="post"
+		class="col-md-12 blank-form">
+
+		<div class="col-md-12">
+			<div class="row" style="padding-bottom: 0px;">
+				<div class="col-xs-12 col-sm-12 col-md-12">
+					<ul class="nav nav-tabs">
+						<li id="contrato" class="active"><a>Contrato</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-12">
+
+			<div class="col-md-12">
+				<div class="col-md-4">
+					<div class="table-responsive">
+						<table class="table table-condensed table-bordered">
+							<tr>
+								<th>Tipo de Trabajador:</th>
+								<td><select id="tipoTrabajador"
+									class="form-control input-circle row_dataLaboral"
+									name="tipoTrabajador" col_name="tipoTrabajador">
+										<option value="">Seleccion...</option>
+								</select></td>
+							</tr>
+							<tr>
+								<th>Empresa:</th>
+								<td><select id="sociedad"
+									class="form-control input-circle row_dataLaboral"
+									name="sociedad" col_name="id_sociedad">
+										<option value="">Seleccion...</option>
+										<c:if test="${not empty listaSociedad}">
+											<c:forEach items="${listaSociedad}" var="sociedad">
+												<c:if test="${sociedad.idSociedad != -1}">
+													<option value="${sociedad.idSociedad}">${sociedad.sociedad}</option>
+												</c:if>
+											</c:forEach>
+										</c:if>
+								</select></td>
+							</tr>
+							<tr>
+								<th>Huerto</th>
+								<td><select id="idHuerto"
+									class="form-control input-circle row_data" name="idHuerto"
+									col_name="idHuerto">
+										<option value="">Seleccion...</option>
+										<%-- <c:if test="${not empty listaDivision}">
+										<c:forEach items="${listaDivision}" var="division">
+											<option value="${division.idDivision}">${division.nombre}</option>
+										</c:forEach>
+									</c:if> --%>
+								</select></td>
+							</tr>
+							<tr style="display:none;" >
+									<th>Huerto Contrato</th>
+									<td><input id="idHuertoContrato"
+										class="form-control input-circle row_dataLaboral" name="idHuertoContrato"
+										col_name="idHuertoContrato" />
+									</td>
+							</tr>
+							<tr>
+								<th>Zona</th>
+								<td><select id="idZona"
+									class="form-control input-circle row_data" name="idZona"
+									col_name="idZona">
+										<option value="">Seleccion...</option>
+										<%-- <c:if test="${not empty listaSubDivision}">
+										<c:forEach items="${listaSubDivision}" var="SubDivision">
+											<option value="${SubDivision.idSubDivision}">${SubDivision.nombre}</option>
+										</c:forEach>
+									</c:if> --%>
+								</select></td>
+							</tr>
+							<tr>
+								<th>Ceco</th>
+								<td><select id="idCECO"
+									class="form-control input-circle row_data" name="idCECO"
+									col_name="idCECO">
+										<option value="">Seleccion...</option>
+								</select>
+							</tr>
+							<tr style="display:none;" >
+									<th>CECO Contrato</th>
+									<td><input id="idCECOContrato"
+										class="form-control input-circle row_dataLaboral" name="idCECOContrato"
+										col_name="idCECOContrato" />
+									</td>
+							</tr>
+							<tr style="display:none;">
+								<th>Faena</th>
+								<td><select id="idFaena"
+									class="form-control input-circle row_data" name="idFaena"
+									col_name="idFaena">
+										<option value="">Seleccion...</option>
+								</select>
+							</tr>
+							<tr>
+								<th>Faena</th>
+								<td><select id="idFaenaContrato"
+									class="form-control input-circle row_dataLaboral" name="idFaenaContrato"
+									col_name="idFaenaContrato">
+										<option value="">Seleccion...</option>
+								</select>
+							</tr>
+							<th>Cargo</th>
+							<td><select id="cargo"
+								class="form-control input-circle row_dataLaboral" name="cargo"
+								col_name="cargo">
+									<option value="" >Seleccion...</option>
+							</select>
+							</tr>
+
+							<tr>
+								<th>INE</th>
+								<td><select id="posicion"
+									class="form-control input-circle row_dataLaboral"
+									name="posicion" col_name="posicion">
+										<option value="">Seleccion...</option>
+										<option value="1">Posicion 1</option>
+										<option value="2">Posicion 2</option>
+										<option value="3">Posicion 3</option>
+										<option value="4">Posicion 4</option>
+										<option value="5">Posicion 5</option>
+										<option value="6">Posicion 6</option>
+										<option value="7">Posicion 7</option>
+										<option value="8">Posicion 8</option>
+								</select>
+							</tr>
+							<tr>
+								<th>Supervisor</th>
+								<td><input type='checkbox' id='supervisor' name="supervisor"
+									class='row_dataLaboral checkbox checkboxOption'
+									col_name="supervisor" /></td>
+							</tr>
+							<tr>
+								<th>Aplicador</th>
+								<td><input type='checkbox' name="maquinista"
+									id='maquinista' class='row_dataLaboral checkbox checkboxOption'
+									col_name="maquinista" /></td>
+							</tr>
+							<tr>
+								<th>Licencia de Conducir:</th>
+								<td aling="left" class="desplegar"><input type='checkbox'
+									id='licenciaConducir'
+									class='row_data checkbox checkboxOption checkboxCollapse'
+									col_name="licenciaConducir" />
+									<label class="desplegar-label" for="licenciaConducir"></label>
+									</td>
+							</tr>
+							<tr style="display: none;">
+								<th>Tipo de Licencia:</th>
+								<td><select id="idTipoLicenciaConducir1" tabindex="33"
+									class="form-control input-circle row_dataConducir"
+									edit-type="click" col_name="idTipoLicenciaConducir1"
+									name="idTipoLicenciaConducir1">
+										<option value="">Seleccione...</option>
+								</select></td>
+							</tr>
+							<tr style="display: none;">
+								<th>Tipo de Licencia:</th>
+								<td><select id="idTipoLicenciaConducir2" tabindex="33"
+									class="form-control input-circle row_dataConducir"
+									edit-type="click" col_name="idTipoLicenciaConducir2"
+									name="idTipoLicenciaConducir2">
+										<option value="">Seleccione...</option>
+								</select></td>
+							</tr>
+							<tr style="display: none;">
+								<th>Tipo de Licencia:</th>
+								<td><select id="idTipoLicenciaConducir3" tabindex="33"
+									class="form-control input-circle row_dataConducir"
+									edit-type="click" col_name="idTipoLicenciaConducir3"
+									name="idTipoLicenciaConducir3">
+										<option value="">Seleccione...</option>
+								</select></td>
+							</tr>
+							<tr style="display: none;">
+								<th>Numero de Licencia:</th>
+								<td class="col-md-6"><div class="inner-addon right-addon" >
+								<a data-toggle="modal" data-target=".subirFoto" class="glyphicon glyphicon-credit-card" data-idtipodocumento="100" onclick="previsualizarImagen(100)"></a>
+								<input id="numeroLicencia"
+									name="numeroLicencia" onkeypress="return justNumbers2(event);"
+									class="row_dataConducir form-control input-md blank-input"
+									col_name="numeroLicencia"></div></td>
+							</tr>
+							<tr style="display: none;">
+								<th>Fecha Vencimiento:</th>
+								<td><input id="fechaVencimiento" type="text"
+									class="form-control input-circle row_dataConducir dateWork"
+									col_name="fechaVencimiento" name="fechaVencimiento"></td>
+							</tr>
+							<!-- Licencia Quimicos -->
+							<tr>
+								<th>Credencial SAG:</th>
+								<td aling="left" class="desplegar" ><input type='checkbox'
+									id='licenciaQuimicos'
+									class='row_data checkbox checkboxOption checkboxCollapse'
+									col_name="licenciaQuimicos" />
+									<label class="desplegar-label" for="licenciaQuimicos"></label>
+									</td>
+							</tr>
+							<tr style="display: none;">
+								<th>Numero de Credencial SAG:</th>
+								<td class="col-md-6"><div class="inner-addon right-addon" >
+								<a data-toggle="modal" data-target=".subirFoto" class="glyphicon glyphicon-credit-card" data-idtipodocumento="110" onclick="previsualizarImagen(110)"></a>
+								<input id="numeroLicenciaSAG"
+									name="numeroLicenciaSAG"
+									onkeypress="return justNumbers2(event);"
+									class="row_dataQuimicos form-control input-md blank-input"
+									col_name="numeroLicenciaSAG"></div></td>
+							</tr>
+							<tr style="display: none;">
+								<th>Fecha Vencimiento Credencial SAG:</th>
+								<td><input id="fechaVencimientoSAG" type="text"
+									class="form-control input-circle row_dataQuimicos dateWork"
+									col_name="fechaVencimientoSAG" name="fechaVencimientoSAG"></td>
+							</tr>
+							<!-- Licencia Quimicos -->
+							<tr>
+								<th>AGRO</th>
+								<td><input type='checkbox' id='agro' name="agro"
+									class='row_data checkbox checkboxOption' col_name="agro" /></td>
+							</tr>
+							<tr>
+								<th>Trabajador Agricola</th>
+								<td><input type='checkbox' name="trabajadorAgricola"
+									id='trabajadorAgricola'
+									class='row_data checkbox checkboxOption'
+									col_name="trabajadorAgricola" /></td>
+							</tr>
+						</table>
+					</div>
+
+				</div>
+
+				<div class="col-md-4">
+					<div class="table-responsive">
+						<table class="table table-condensed table-bordered">
+							<tr style="display:none;">
+								<th>Fecha de Contrato:</th>
+								<td><input readonly id="fechaIngresoCompania" type="text"
+									class="form-control input-circle row_data dateWork"
+									col_name="fechaIngresoCompania" name="fechaIngresoCompania"></td>
+							</tr>
+							<tr style="display:none;">
+								<th>Fecha de Contrato:</th>
+								<td><input readonly id="fIngresoCompContrato" type="text"
+									class="form-control input-circle row_dataLaboral dateWork"
+									col_name="fIngresoCompContrato" name="fIngresoCompContrato"></td>
+							</tr>
+							<tr>
+								<th>Fecha de Ingreso:</th>
+								<td><input readonly id="fechaIngreso" type="text"
+									class="form-control input-circle row_dataLaboral dateWork"
+									col_name="fecha_inicio_actividad" name="fecha_inicio_actividad"></td>
+							</tr>
+							<tr>
+									<th>Tipo de Contrato</th>
+									<td><select id="tipoContrato"
+										class="form-control input-circle row_dataLaboral"
+										name="tipoContrato" col_name="tipoContrato">
+											<option value="">Seleccion...</option>
+									</select></td>
+							</tr>
+							 <tr style="display:none;">
+								<th>Estado Contrato:</th>
+								<td><input id="estadoContrato" type="text" 
+									class="form-control input-circle row_dataEstadoContrato"
+									col_name="estado_contrato" name="estadoContrato" value=""></td>
+							</tr> 
+							<!-- 
+							<tr>
+								<th>Tipo de Contrato</th>
+								<td><select id="tipoContrato"
+									class="form-control input-circle row_dataLaboral"
+									name="tipoContrato" col_name="tipoContrato">
+										<option value="">Seleccion...</option>
+								</select></td>
+							</tr>
+ 							-->
+							<tr>
+								<th>Fecha Termino:</th>
+								<td>
+								<div class="inner-addon right-addon" >
+								<i class="charCloseX" onclick="deleteDate(this);" >&#10006</i>
+								<input readonly id="fechaTermino" type="text"
+									class="row_dataLaboral form-control input-circle dateWork"
+									col_name="fecha_termino_actividad"
+									name="fecha_termino_actividad">
+									</div>
+									</td>
+							</tr>
+							<tr>
+								<th>Sueldo Base</th>
+								<td>
+										<input readonly autocomplete="off"
+											onkeypress="return justNumbers(event);" id="sueldo_mensual"
+											class="blank-input form-control input-md money row_dataLaboral"
+											col_name="sueldoBase" type="text" name="sueldo_mensual">
+									</td>
+							</tr>
+							<tr>
+								<th>Part Time</th>
+								<td><input type='checkbox' id='partTime'
+									class='row_dataLaboral checkbox checkboxOption'
+									col_name="partTime" /></td>
+							</tr>
+							<tr>
+								<th>Horas Semanales:</th>
+								<td><input onkeypress="return justNumbers2(event);"
+									id="hrs_semanal"
+									class="blank-input form-control input-md row_dataLaboral"
+									col_name="horasSemanales" type="text" name="hrs_semanal"></td>
+							</tr>
+							<tr>
+								<th>Turno Supervisor</th>
+								<td><select id="idTurno"
+									class="form-control input-circle row_dataLaboral"
+									name="idTurno" col_name="idTurno">
+										<option value="">Seleccione...</option>
+										<c:if test="${not empty listaTurno}">
+											<c:forEach items="${listaTurno}" var="turno">
+												<option value="${turno.idTurno}">${turno.nombreTurno}</option>
+											</c:forEach>
+										</c:if>
+								</select>
+							</tr>
+						</table>
+					</div>
+
+				</div>
+
+				<div class="col-md-4">
+					<div class="table-responsive">
+						<table class="table table-condensed table-bordered">
+							<tr>
+								<th>Institucion Previsional</th>
+								<td><select id="idAFP"
+									class="form-control input-circle row_data row_dataCalculo"
+									name="idAFP" col_name="idAFP">
+										<option value="">Seleccion...</option>
+										<%-- <c:if test="${not empty listaAFP}">
+											<c:forEach items="${listaAFP}" var="AFP">
+												<option value="${AFP.idafp}">${AFP.nombreAFP}</option>
+											</c:forEach>
+										</c:if> --%>
+								</select></td>
+							</tr>
+							<tr>
+								<th>Fecha de Afiliacion AFP</th>
+								<td><input readonly id="fechaAfiliacionAFP" type="text"
+									class="blank-input form-control input-circle row_data row_dataCalculo dateWork"
+									edit-type="click" col_name="fechaAfiliacionAFP"
+									name="fechaAfiliacionAFP"></td>
+							</tr>
+							<tr>
+								<th>Pensionado</th>
+								<td><input type='checkbox' name="pensionados"
+									id='pensionados' class='row_data checkbox checkboxOption'
+									col_name="pensionados" /></td>
+							</tr>
+							<tr>
+								<th>Pensionado Cotizante</th>
+								<td><input type='checkbox' name="pensionadosCotizante"
+									id='pensionadosCotizantes'
+									class='row_data checkbox checkboxOption'
+									col_name="pensionadosCotizantes" /></td>
+							</tr>
+							<tr>
+								<th>Cotizacion AFC Mas de 11 años Empresa</th>
+								<td><input type='checkbox' id='mayor11Anos'
+									name="mayor11Anos" class='row_data checkbox checkboxOption'
+									col_name="mayor11Anos" /></td>
+							</tr>
+							<tr>
+								<th>S. Cesantia</th>
+								<td><input type='checkbox' name="sCesantia" id='sCesantia'
+									value="1" class='row_data checkbox checkboxOption'
+									col_name="sCesantia" /></td>
+							</tr>
+							<tr>
+								<th>Salud</th>
+								<td><select id="idIsapre"
+									class="form-control input-circle row_data row_dataCalculo"
+									name="idIsapre" col_name="idIsapre">
+										<option value="">Seleccion...</option>
+								</select></td>
+							</tr>
+							<tr>
+								<th>Moneda Plan</th>
+								<td><select id="idMonedaPlan"
+									class="form-control input-circle row_data row_dataCalculo row_dataSalud"
+									name="idMonedaPlan" col_name="idMonedaPlan">
+										<option value="">Seleccion...</option>
+								</select></td>
+							</tr>
+							<tr>
+								<th>Valor Plan</th>
+								<td><input
+											onkeypress="return justNumbers(event);" id="valorPlan"
+											class="blank-input form-control input-md money row_data row_dataCalculo row_dataSalud"
+											col_name="valorPlan" type="text" name="valorPlan">
+									</td>
+							</tr>
+						</table>
+					</div>
+
+				</div>
+
+			</div>
+
+
+		</div>
+
+
+
+		<div class="col-md-12">
+			<div class="row" style="padding-bottom: 0px;">
+				<div class="col-xs-12 col-sm-12 col-md-12">
+					<ul class="nav nav-tabs">
+						<li id="masInformacion" class="active"><a>Otros
+								Antecedentes</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-12">
+			<div class="col-md-4">
+				<div class="table-responsive">
+					<table class="table table-condensed table-bordered">
+						<tr>
+							<th>Ahorro AFP:</th>
+							<td class="desplegar"><input type="checkbox" id="ahorroAFP"
+								class="row_data checkbox checkboxOption checkboxCollapse"
+								col_name="ahorroAFP" >
+								<label class="desplegar-label" for="ahorroAFP"></label>
+								</td>
+						</tr>
+						<tr style="display: none;">
+							<th>Institucion Ahorro AFP</th>
+							<td><select id="idAdicionalAFP"
+								class="form-control input-circle row_data row_dataCalculo row_dataAhorroAFP"
+								name="idAdicionalAFP" col_name="idAdicionalAFP">
+									<option value="">Seleccion...</option>
+							</select></td>
+						</tr>
+						<tr style="display: none;">
+							<th>Moneda Ahorro AFP</th>
+							<td><select id="idMonedaAFP"
+								class="form-control input-circle row_data row_dataCalculo row_dataAhorroAFP"
+								name="idMonedaAFP" col_name="idMonedaAFP">
+									<option value="">Seleccion...</option>
+							</select></td>
+						</tr>
+						<tr style="display: none;">
+							<th>Valor Ahorro AFP</th>
+							<td><input
+										onkeypress="return justNumbers(event);" id="valorAFP"
+										class="blank-input form-control input-md money row_data row_dataCalculo row_dataAhorroAFP"
+										col_name="valorAFP" type="text" name="valorAFP">
+								</td>
+						</tr>
+						<tr>
+							<th>APV:</th>
+							<td class="desplegar"><input type="checkbox" id="apv"
+								class="row_data checkbox checkboxOption checkboxCollapse"
+								col_name="apv">
+								<label class="desplegar-label" for="apv"></label>
+								</td>
+						</tr>
+						<tr style="display: none;">
+							<th>Institucion APV:</th>
+							<td><select id="institucionAPV" name="institucionAPV"
+								class="row_data row_dataAPV form-control input-circle"
+								col_name="institucionAPV">
+									<option value="">Seleccione...</option>
+									<%-- <c:if test="${not empty listaAFP}">
+												<c:forEach items="${listaAFP}" var="AFP">
+													<option value="${AFP.idafp}">${AFP.nombreAFP}</option>
+												</c:forEach>
+											</c:if> --%>
+							</select></td>
+						</tr>
+						<tr style="display: none;">
+							<th>Moneda APV:</th>
+							<td><select id="idMonedaAPV" name="idMonedaAPV"
+								class="row_data row_dataAPV form-control input-circle"
+								col_name="idMonedaAPV">
+									<option value="">Seleccione..</option>
+							</select></td>
+
+						</tr>
+						<tr style="display: none;">
+							<th>Deposito APV:</th>
+							<td><input
+										onkeypress="return justNumbers(event);" id="valorDepositoAPV"
+										class="blank-input form-control input-md moneyWork row_data row_dataAPV"
+										col_name="valorDepositoAPV" type="text"
+										name="valorDepositoAPV">
+								</td>
+						</tr>
+						<tr>
+							<th>Ahorro Convenido:</th>
+							<td class="desplegar"><input type="checkbox" id="convenido"
+								class="row_data checkbox checkboxOption checkboxCollapse"
+								col_name="convenido">
+								<label class="desplegar-label" for="convenido"></label>
+								</td>
+						</tr>
+						<tr style="display: none;">
+							<th>Institucion Ahorro Convenido:</th>
+							<td><select id="institucionConvenido"
+								name="institucionConvenido"
+								class="row_data row_dataConvenido form-control input-circle"
+								col_name="institucionConvenido">
+									<option value="">Seleccione...</option>
+									<%-- <c:if test="${not empty listaAFP}">
+												<c:forEach items="${listaAFP}" var="AFP">
+													<option value="${AFP.idafp}">${AFP.nombreAFP}</option>
+												</c:forEach>
+											</c:if> --%>
+							</select></td>
+						</tr>
+						<tr style="display: none;">
+							<th>Moneda Ahorro Convenido:</th>
+							<td><select id="idMonedaConvenido" name="idMonedaConvenido"
+								class="row_data row_dataConvenido form-control input-circle"
+								col_name="idMonedaConvenido">
+									<option value="">Seleccione..</option>
+							</select></td>
+						</tr>
+						<tr style="display: none;">
+							<th>Monto Ahorro Convenido:</th>
+							<td><input
+										onkeypress="return justNumbers(event);" id="valorConvenido"
+										class="blank-input form-control input-md moneyWork row_data row_dataConvenido"
+										col_name="valorConvenido" type="text" name="valorConvenido">
+								</td>
+						</tr>
+						<tr style="display: none;">
+							<th>Nro Contrato:</th>
+							<td class="col-md-6"><input id="nContrato" name="nContrato"
+								onkeypress="return justNumbers2(event);"
+								class="row_data row_dataConvenido row_dataAPV form-control input-md blank-input"
+								col_name="nContrato"></td>
+						</tr>
+
+					</table>
+				</div>
+
+			</div>
+
+			<div class="col-md-4">
+				<div class="table-responsive">
+					<table class="table table-condensed table-bordered">
+						<!-- <tr>
+							<th>Subgrupo</th>
+							<td><select id="idSubGrupo"
+								class="form-control input-circle row_data" name="idSubGrupo"
+								col_name="idSubGrupo">
+									<option value="">Seleccion...</option>
+							</select>
+						</tr> -->
+
+
+						<tr>
+							<th>Licencia Maternal</th>
+							<td class="desplegar"><input type='checkbox' id='licenciaMaternal'
+								class='row_data checkbox checkboxOption checkboxCollapse'
+								col_name="licenciaMaternal" />
+								<label class="desplegar-label" for="licenciaMaternal"></label>
+								</td>
+						</tr>
+						<tr style="display: none;">
+							<th>Fecha Probable de Concepcion:</th>
+							<td><input id="fechaConcepcion" type="text"
+								class="form-control input-circle row_dataMaternal dateWork"
+								col_name="fechaConcepcion" name="fechaConcepcion"></td>
+						</tr>
+						<tr style="display: none;">
+							<th>Fecha Probable de Termino de Contrato:</th>
+							<td><input id="fechaTerminoContrato" type="text"
+								class="form-control input-circle row_dataMaternal dateWork"
+								col_name="fechaTerminoContrato" name="fechaTerminoContrato"></td>
+						</tr>
+						<tr>
+									<th>Trabajador Joven</th>
+									<td><input type='checkbox' name="trabajadorJoven"
+										id='trabajadorJoven'
+										class='row_data checkbox checkboxOption'
+										col_name="trabajadorJoven" /></td>
+						</tr>
+
+					</table>
+				</div>
+
+			</div>
+
+			<div class="col-md-4">
+				<div class="table-responsive">
+					<table class="table table-condensed table-bordered">
+						<tr>
+							<th>Para Finiquitar?</th>
+							<td><input id="paraFiniquitar" type="checkbox"
+								class="row_dataLaboral checkbox checkboxOption"
+								col_name="paraFiniquitar" name="paraFiniquitar"></td>
+						</tr>
+						<tr>
+							<th>Finiquitado</th>
+							<td><input id="finiquitado" type="checkbox"
+								class="row_dataLaboral checkbox checkboxOption"
+								col_name="finiquitado" name="finiquitado"></td>
+						</tr>
+						<tr style="display: none;">
+							<th>Articulo Termino Contrato:</th>
+							<td><select id="articuloTerminoContrato"
+								class="form-control input-circle row_dataLaboral row_dataFiniquito"
+								col_name="articuloTerminoContrato"
+								name="articuloTerminoContrato">
+									<option value="">Seleccione...</option>
+									<c:if test="${not empty listaArticuloTerminoContrato}">
+										<c:forEach items="${listaArticuloTerminoContrato}"
+											var="articuloTerminoContrato">
+											<option
+												value="${articuloTerminoContrato.idArticuloTerminoContrato}">${articuloTerminoContrato.descripcion}</option>
+										</c:forEach>
+									</c:if>
+							</select></td>
+						</tr>
+						<tr style="display: none;">
+							<th>Inciso Termino Contrato:</th>
+							<td><select id="incisoTerminoContrato"
+								class="form-control input-circle row_dataLaboral row_dataFiniquito"
+								col_name="incisoTerminoContrato" name="incisoTerminoContrato">
+									<option value="">Seleccione...</option>
+									<c:if test="${not empty listaIncisoTerminoContrato}">
+										<c:forEach items="${listaIncisoTerminoContrato}"
+											var="incisoTerminoContrato">
+											<option
+												value="${incisoTerminoContrato.idIncisoTerminoContrato}">${incisoTerminoContrato.descripcion}</option>
+										</c:forEach>
+									</c:if>
+							</select></td>
+						</tr>
+						<tr style="display: none;">
+							<th>Letra Termino Contrato:</th>
+							<td><select id="letraTerminoContrato"
+								class="form-control input-circle row_dataLaboral row_dataFiniquito"
+								col_name="letraTerminoContrato" name="letraTerminoContrato">
+									<option value="">Seleccione...</option>
+									<c:if test="${not empty listaLetraTerminoContrato}">
+										<c:forEach items="${listaLetraTerminoContrato}"
+											var="letraTerminoContrato">
+											<option
+												value="${letraTerminoContrato.idLetraTerminoContrato}">${letraTerminoContrato.letraTerminoContrato}
+												- ${letraTerminoContrato.descripcion}</option>
+										</c:forEach>
+									</c:if>
+							</select></td>
+						</tr>
+						<tr style="display: none;">
+							<th>Descripcion:</th>
+							<td><input id="descripcion" type="text"
+								class="form-control input-circle row_dataLaboral row_dataFiniquito"
+								col_name="descripcion" name="descripcion" /></td>
+						</tr>
+						<tr style="display: none;">
+							<th>Fecha Notificacion:</th>
+							<td><input id="fechaNotificacion" type="text"
+								class="form-control input-circle row_dataLaboral row_dataFiniquito dateWork"
+								col_name="fechaNotificacion" name="fechaNotificacion"></td>
+						</tr>
+						<tr style="display: none;">
+							<th>Fecha Pago:</th>
+							<td><input id="fechaPago" type="text"
+								class="form-control input-circle row_dataLaboral row_dataFiniquito dateWork"
+								col_name="fechaPago" name="fechaPago"></td>
+						</tr>
+						<tr style="display: none;">
+							<th>Lugar Pago:</th>
+							<td><input id="lugarPago" type="text"
+								class="form-control input-circle row_dataLaboral row_dataFiniquito"
+								col_name="lugarPago" name="lugarPago" /> </select></td>
+						</tr>
+						<tr style="display: none;">
+							<th>Hora Pago Inicio:</th>
+							<td><input id="horaPago" type="text"
+								class="form-control input-circle row_dataLaboral row_dataFiniquito timeWork"
+								col_name="horaPago" name="horaPago"></td>
+						</tr>
+						<tr style="display: none;">
+							<th>Hora Pago Fin:</th>
+							<td><input id="horaPago2" type="text"
+								class="form-control input-circle row_dataLaboral row_dataFiniquito timeWork"
+								col_name="horaPago2" name="horaPago2"></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+
+		</div>
+
+
+	</form>
+
+</div>
